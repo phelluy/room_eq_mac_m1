@@ -61,4 +61,10 @@ Procédure suivie, qui a fonctionné:
 ## Calcul des filtres
 
 1) Vous êtes dans la fenêtre principale de REW et vous voyez vos mesures dans la partie gauche. Dans la partie droite, cliquer sur le bouton "All SPL". Puis cliquer sur le bouton "Averages the responses". Cette opération calcule une moyenne des mesures de la zone d'écoute. Décochez toutes les cases, pour faire disparaître les courbes de mesure, sauf la courbe "Average 1". Vous voyez ainsi la courbe de réponse en fréquence sur laquelle sera appliquée l'égalisation. Vous voyez aussi les modes de résonances de votre pièce et de votre système audio. Chez moi par exemple, les basses sont boursouflées et il y a deux pics vers 60 et 120 Hz.
-2) Cliquer maintenant sur le bouton "EQ" en haut à droite. 
+2) Cliquer maintenant sur le bouton "EQ" en haut à droite. Dans "Equalizer", choisir "miniDSP 2x4 HD".
+3) Dans "Target type", choisir "full range speaker". Cocher la case "Add room curve" et laisser les paramètres par défaut. Cliquer sur "Calculate target level from response".
+4) Dans l'onglet "Filter tasks" commencer par indiquer la plage de fréquences pour l'égalisation ("Match range"), par exemple 30-15000 Hz, comme pour la mesure. Enfin cliquer sur "Match response to target". REW calcule les coefficients de filtre. Vous pouvez vérifier graphiquement l'effet obtenu. Il ne reste plus qu'à sauver les caractéristiques des filtres avec l'option "Export filter settings as text".
+
+## Activation de l'égalisation
+
+à suivre...
