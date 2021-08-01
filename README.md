@@ -63,8 +63,72 @@ Procédure suivie, qui a fonctionné:
 1) Vous êtes dans la fenêtre principale de REW et vous voyez vos mesures dans la partie gauche. Dans la partie droite, cliquer sur le bouton "All SPL". Puis cliquer sur le bouton "Averages the responses". Cette opération calcule une moyenne des mesures de la zone d'écoute. Décochez toutes les cases, pour faire disparaître les courbes de mesure, sauf la courbe "Average 1". Vous voyez ainsi la courbe de réponse en fréquence sur laquelle sera appliquée l'égalisation. Vous voyez aussi les modes de résonances de votre pièce et de votre système audio. Chez moi par exemple, les basses sont boursouflées et il y a deux pics vers 60 et 120 Hz.
 2) Cliquer maintenant sur le bouton "EQ" en haut à droite. Dans "Equalizer", choisir "miniDSP 2x4 HD".
 3) Dans "Target type", choisir "full range speaker". Cocher la case "Add room curve" et laisser les paramètres par défaut. Cliquer sur "Calculate target level from response".
-4) Dans l'onglet "Filter tasks" commencer par indiquer la plage de fréquences pour l'égalisation ("Match range"), par exemple 30-15000 Hz, comme pour la mesure. Enfin cliquer sur "Match response to target". REW calcule les coefficients de filtre. Vous pouvez vérifier graphiquement l'effet obtenu. Il ne reste plus qu'à sauver les caractéristiques des filtres avec l'option "Export filter settings as text".
+4) Dans l'onglet "Filter tasks" commencer par indiquer la plage de fréquences pour l'égalisation ("Match range"), par exemple 30-15000 Hz, comme pour la mesure. Enfin cliquer sur "Match response to target". REW calcule les coefficients de filtre. Vous pouvez vérifier graphiquement l'effet obtenu. Il ne reste plus qu'à sauver les caractéristiques des filtres avec l'option "Export filter settings as text". Un exemple de fichier obtenu, `filter_example.txt` est inclus dans ce dépôt git.
 
 ## Activation de l'égalisation
 
-à suivre...
+### Carte son virtuelle
+
+Pour activer l'égalisation sur Mac, il faut d'abord installer une carte son virtuelle. Deezer (par exemple) enverra son signal vers cette carte son. Le logiciel DSP récupérera le signal de la carte virtuelle pour l'envoyer vers la vraie carte.
+
+J'ai installé la version deux canaux de l'outil blackhole:
+https://github.com/ExistentialAudio/BlackHole
+au moyen de brew, avec la commande:
+
+``` brew install blackhole-2ch ```
+
+Si vous ouvrez le panneau son des préférences système vous voyez apparaître un nouveau périphérique de sortie et un nouveau périphérique d'entrée. Les deux sont dénommés "BlackHole 2ch".
+
+### Installation de CamillaDSP
+
+CamillaDSP est un logiciel écrit en RUST pour appliquer des filtres à un signal sonore. Il est développé par Henrik Enquist, voir:
+https://github.com/HEnquist/camilladsp
+Henrik Enquist a aussi créé un petit dépôt GitHub pour une installation facile de CamillaDSP et de ses dépendences:
+https://github.com/HEnquist/camilladsp-setupscripts
+Suivre les indications données. Il faut au préalable avoir installé Miniconda ou Anaconda:
+https://www.anaconda.com/products/individual
+
+Quand j'ai lancé la script `install_mac_arm.sh`, j'ai eu une erreur, que j'ai supprimée en commentant la ligne
+```source ~/opt/anaconda3/etc/profile.d/conda.sh````
+de ce script (mettre un `#` devant).
+
+Pour lancer cammillaDSP suivre les instructions, en résumé il faut lancer le backend:
+```./camilladsp -p1234 -w````
+L'option `-p1234` signifie que le backend attend des instructions d'une page web. L'option `-w` signifie que le fichier de configuration sera fournie par la page web.
+Dans une autre fenêtre de terminal, tapez:
+```
+cd camillagui
+conda activate camillagui
+python main.py
+ ```
+Ensuite connectez vous à l'adresse http://localhost:5000
+avec votre navigateur internet.
+
+CamillaDSP est installé. Nous allons maintenant créer un fichier de configurtation.
+
+### Génération d'un fichier de config
+
+Le script python `dataconvert.py` fourni dans ce dépôt permet d'inclure le fichier txt généré par REW dans un fichier yaml de configuration CamillaDSP. Taper la commande:
+```
+python dataconvert.py filter_example.txt
+````
+Cette commande ajoute les filtres dans le fichier `config_template.yml` et génère un fichier `filter_example.yaml`
+
+#### Dernière étape !
+
+Retourner dans le navigateur web à la page  `http://localhost:5000/gui/index.html`
+Dans l'onglet "File" charger le fichier "filter_example.yaml" (au moyen de la commande "Upload").
+
+Si le fichier de configuration contient des erreurs, un `!` apparaît dans l'onglet correspondant.
+Corriger les éventuelles erreurs.
+
+Dans l'onglet "Devices", vous devez choisir le bon "Playback Device": c'est la sortie qui va envoyer le son vers les enceintes. Dans mon cas, c'est le périphérique "BT HIFI AUDIO", mais cela dépend évidemment de votre système.
+
+Ne pas oublier de sélectionner comme sortie sonore la carte virutelle "BlackHole 2ch" dans les préférences système.
+
+Appuyer ensuite sur le bouton "Apply to CDSP". Vous devriez voir le vu-mètre vert s'activer quand vous mettez en route de la musique. 
+
+
+
+
+

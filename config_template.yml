@@ -1,0 +1,63 @@
+devices:
+  adjust_period: 3
+  capture:
+    channels: 2
+    device: BlackHole 2ch
+    format: FLOAT32LE
+    type: CoreAudio
+  capture_samplerate: 48000
+  chunksize: 1024
+  enable_rate_adjust: false
+  enable_resampling: true
+  playback:
+    channels: 2
+    device: BT HIFI AUDIO
+    format: FLOAT32LE
+    type: CoreAudio
+  queuelimit: 4
+  resampler_type: FastAsync
+  samplerate: 48000
+  silence_threshold: 0
+  silence_timeout: 0
+  target_level: 1024
+filters:
+  New Filter 1:
+    parameters:
+      gain: 20
+      inverted: false
+      mute: false
+    type: Gain
+  volumeexample:
+    parameters:
+      ramp_time: 200
+    type: Volume
+mixers:
+  New Mixer 1:
+    channels:
+      in: 2
+      out: 2
+    mapping:
+    - dest: 0
+      mute: false
+      sources:
+      - channel: 0
+        gain: 0
+        inverted: false
+        mute: false
+pipeline:
+- channel: 0
+  names:
+  - New Filter 1
+  type: Filter
+- channel: 0
+  names:
+  - volumeexample
+  type: Filter
+- channel: 1
+  names:
+  - New Filter 1
+  type: Filter
+- channel: 1
+  names:
+  - volumeexample
+  type: Filter

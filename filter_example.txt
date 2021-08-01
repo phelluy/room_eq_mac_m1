@@ -1,0 +1,20 @@
+Filter Settings file
+
+Room EQ V5.20
+Dated: Jul 30, 2021 11:07:32 AM
+
+Notes:ami-eq-test1
+
+Equaliser: miniDSP 2x4 HD
+Average 1
+Filter  1: ON  PK       Fc   39.50 Hz  Gain  -6.80 dB  Q  4.283
+Filter  2: ON  PK       Fc   52.50 Hz  Gain  -4.90 dB  Q  2.000
+Filter  3: ON  PK       Fc   64.30 Hz  Gain  -6.80 dB  Q 12.129
+Filter  4: ON  PK       Fc   80.20 Hz  Gain  -5.30 dB  Q  3.500
+Filter  5: ON  PK       Fc   121.5 Hz  Gain -10.50 dB  Q  4.304
+Filter  6: ON  PK       Fc   366.0 Hz  Gain  -5.70 dB  Q  5.000
+Filter  7: ON  None   
+Filter  8: ON  None   
+Filter  9: ON  None   
+Filter 10: ON  None   
+
