@@ -3,7 +3,7 @@
 
 This guide is written in French. For an English version, here is the automatically translated version:
 
-https://translate.google.com/translate?sl=en&tl=fr&u=https://github.com/phelluy/room_eq_mac_m1
+https://translate.google.com/translate?sl=fr&tl=en&u=https://github.com/phelluy/room_eq_mac_m1
 
 
 ## Introduction
