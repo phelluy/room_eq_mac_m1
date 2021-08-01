@@ -93,7 +93,7 @@ Quand j'ai lancé la script `install_mac_arm.sh`, j'ai eu une erreur, que j'ai s
 de ce script (mettre un `#` devant).
 
 Pour lancer cammillaDSP suivre les instructions, en résumé il faut lancer le backend:
-```./camilladsp -p1234 -w````
+```./camilladsp -p1234 -w```
 L'option `-p1234` signifie que le backend attend des instructions d'une page web. L'option `-w` signifie que le fichier de configuration sera fournie par la page web.
 Dans une autre fenêtre de terminal, tapez:
 ```
@@ -124,9 +124,17 @@ Corriger les éventuelles erreurs.
 
 Dans l'onglet "Devices", vous devez choisir le bon "Playback Device": c'est la sortie qui va envoyer le son vers les enceintes. Dans mon cas, c'est le périphérique "BT HIFI AUDIO", mais cela dépend évidemment de votre système.
 
+Appuyer ensuite sur le bouton "Apply to CDSP". Vous devriez voir le vu-mètre vert s'activer quand vous mettez en route de la musique. 
+
 Ne pas oublier de sélectionner comme sortie sonore la carte virutelle "BlackHole 2ch" dans les préférences système.
 
-Appuyer ensuite sur le bouton "Apply to CDSP". Vous devriez voir le vu-mètre vert s'activer quand vous mettez en route de la musique. 
+Dans les préférences système vous pouvez aussi basculer entre la carte son physique et la carte  "BlackHole 2ch" pour apprécier l'effet de l'égalisation.
+
+J'ai eu un peu de mal à régler le volume sonore. Si le niveau est trop élevé, ça sature, et CamillaDSP lance des warnings. Si c'est trop faible, il faut augmenter le volume, mais plutôt sur l'ampli physique.
+
+Une fois que tout est réglé, l'amélioration est siginficative. La musique sonne de façon beaucoup plus naturelle, sans résonance dans les graves.
+
+Il reste à trouver une mise en place de tout le système qui soit un peu plus ergonomiqe. À suivre...
 
 
 
