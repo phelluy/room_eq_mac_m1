@@ -1,4 +1,4 @@
-# Room Equalization HowTo with REW and Apple Silicon
+# Room Equalization with REW and CamillaDSP on Apple Silicon
 
 
 This guide is written in French. For an English version, here is the automatically translated version:
