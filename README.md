@@ -97,8 +97,8 @@ Quand j'ai lancé la script `install_mac_arm.sh`, j'ai eu une erreur, que j'ai s
 ```source ~/opt/anaconda3/etc/profile.d/conda.sh```
 de ce script (mettre un `#` devant).
 
-Pour lancer cammillaDSP suivre les instructions, en résumé il faut lancer le backend:
-```./camilladsp -p1234 -w```
+Pour lancer camillaDSP suivre les instructions, en résumé il faut lancer le backend:  
+```./camilladsp -p1234 -w```  
 L'option `-p1234` signifie que le backend attend des instructions d'une page web. L'option `-w` signifie que le fichier de configuration sera fournie par la page web.
 Dans une autre fenêtre de terminal, tapez:
 ```
