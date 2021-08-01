@@ -3,6 +3,9 @@
 
 This guide is written in French. For an English version, please send it to DeepL or Google Translate !
 
+https://translate.google.com/translate?sl=en&tl=fr&u=https://github.com/phelluy/room_eq_mac_m1
+
+
 ## Introduction
 
 Ce petit guide décrit mon expérience d'égalisation audio d'une pièce (room audio equalization) sur mon Mac avec puce M1 Apple Silicon. J'ai regroupé diverses informations éparses sur le web et j'ai procédé avec pas mal d'essais et d'erreurs.
@@ -108,7 +111,7 @@ CamillaDSP est installé. Nous allons maintenant créer un fichier de configurat
 
 ### Génération d'un fichier de config
 
-Le script python `dataconvert.py` fourni dans ce dépôt  (écrit par `https://github.com/mhelluy`)permet d'inclure le fichier txt généré par REW dans un fichier yaml de configuration CamillaDSP. Taper la commande:
+Le script python `dataconvert.py` fourni dans ce dépôt  (écrit par `https://github.com/mhelluy`) permet d'inclure le fichier txt généré par REW dans un fichier yaml de configuration CamillaDSP. Taper la commande:
 ```
 python dataconvert.py filter_example.txt
 ````
