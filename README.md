@@ -108,7 +108,7 @@ CamillaDSP est installé. Nous allons maintenant créer un fichier de configurat
 
 ### Génération d'un fichier de config
 
-Le script python `dataconvert.py` fourni dans ce dépôt permet d'inclure le fichier txt généré par REW dans un fichier yaml de configuration CamillaDSP. Taper la commande:
+Le script python `dataconvert.py` fourni dans ce dépôt  (écrit par `https://github.com/mhelluy`)permet d'inclure le fichier txt généré par REW dans un fichier yaml de configuration CamillaDSP. Taper la commande:
 ```
 python dataconvert.py filter_example.txt
 ````
