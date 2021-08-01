@@ -9,9 +9,9 @@ Ce petit guide décrit mon expérience d'égalisation audio d'une pièce (room a
 
 J'espère que cette petite expérience servira à d'autres...
 
-Guide rédigé en juillet 2021, la techno évoluant vite, certianes informations donnéesci-dessous peuvent devenir rapidement obsolètes.
+Guide rédigé en juillet 2021, la techno évoluant vite, certaines informations données ci dessous peuvent devenir rapidement obsolètes.
 
-## Ma configuration Hi-fi
+## Ma configuration hi-fi
 
 Ce n'est pas du matériel au top du top, mais je me suis bien amusé à le rassembler:
 
@@ -49,11 +49,11 @@ J'ai utilisé la version 5.20 de REW.
 
 Procédure suivie, qui a fonctionné:
 
-1) Brancher le micro, lancer REW. REW détecte le micro UMIK-1 et vous propose de l'utiliser pour les mesures (dire oui !). On vous propose ensuite de donner l'emplacement du fichier de calibrage, que vous avez récupéré au préalable sur le site de minidsp. Dans les préférences système du Mac, vous pouvez aussi tout de suite choisir comme périphérique de sortie audio la carte son qui va envoyer le son vers le système Hi-fi à égaliser.
-2) Aller dans l'onglet "Preferences" (en haut à droite). Normalement, les périphériques audio sont déjà les bons (vous avez déjà choisi le micro  et la carte son par défaut à l'étape 1). Vérifier tout ça en appuyant sur "Check Levels..." puis "Next". Un bruit est joué et des vue-mètres permettent de vérfier que le son est bien entendu par le micro. Ajuster le volume sonore pour que REW soit content, puis appuyer sur "Finish". Fermer la fenètre.
-3) Aller dans l'onglet "Measure". Choisir la plage de fréquences pour les mesures en remplissant les cases "Start Freq" et "End Freq". J'ai choisi la plage 30 Hz - 15000 Hz parce que le caisson Triangle ne descend pas en dessous de 30 Hz et parce que passé 50 ans je ne risque pas d'entendre des fréquences au dessus de 15 kHz !
+1) Brancher le micro, lancer REW. REW détecte le micro UMIK-1 et vous propose de l'utiliser pour les mesures (dire oui !). On vous propose ensuite de donner l'emplacement du fichier de calibrage, que vous avez récupéré au préalable sur le site de minidsp. Dans les préférences système du Mac, vous pouvez aussi tout de suite choisir comme périphérique de sortie audio la carte son qui va envoyer le son vers le système hi-fi à égaliser.
+2) Aller dans l'onglet "Preferences" (en haut à droite). Normalement, les périphériques audio sont déjà les bons (vous avez déjà choisi le micro  et la carte son par défaut à l'étape 1). Vérifier tout ça en appuyant sur "Check Levels..." puis "Next". Un bruit est joué et des vumètres permettent de vérifier que le son est bien entendu par le micro. Ajuster le volume sonore pour que REW soit content, puis appuyer sur "Finish". Fermer la fenêtre.
+3) Aller dans l'onglet "Measure". Choisir la plage de fréquences pour les mesures en remplissant les cases "Start Freq" et "End Freq". J'ai choisi la plage 30 Hz - 15000 Hz parce que le caisson Triangle ne descend pas en dessous de 30 Hz et parce que passé 50 ans je ne risque pas d'entendre des fréquences au-dessus de 15 kHz !
 4) Appuyer sur le bouton "Check levels". Si le son est trop fort ou trop faible, ajuster le niveau jusqu'à ce que REW soit content.
-5) Ensuite appuyer sur "Start" pour démarrer la mesure. REW émet un son de fréquence variable puis la mesure apparaît dans la fenêtre principale de REW. Vous noterez que cette mesure est très bruitée, surtout dans les hautes fréquences. C'est normal, et c'est pour cela qu'il faut faire plusieurs mesures en déplaçant le micro dans la zone d'écoute (disons dans un rayon de 2 mètres autour de l'auditeur).
+5) Ensuite, appuyer sur "Start" pour démarrer la mesure. REW émet un son de fréquence variable puis la mesure apparaît dans la fenêtre principale de REW. Vous noterez que cette mesure est très bruitée, surtout dans les hautes fréquences. C'est normal, et c'est pour cela qu'il faut faire plusieurs mesures en déplaçant le micro dans la zone d'écoute (disons dans un rayon de 2 mètres autour de l'auditeur).
 6) Refaire donc les étapes 3 à 5, par exemple 5 ou 6 fois en bougeant le micro.
 
 Ça y est, vous avez fini les mesures. On passe maintenant à l'étape de calcul des filtres.
@@ -77,19 +77,19 @@ au moyen de brew, avec la commande:
 
 ``` brew install blackhole-2ch ```
 
-Si vous ouvrez le panneau son des préférences système vous voyez apparaître un nouveau périphérique de sortie et un nouveau périphérique d'entrée. Les deux sont dénommés "BlackHole 2ch".
+Si vous ouvrez le panneau son des préférences système, vous voyez apparaître un nouveau périphérique de sortie et un nouveau périphérique d'entrée. Les deux sont dénommés "BlackHole 2ch".
 
 ### Installation de CamillaDSP
 
 CamillaDSP est un logiciel écrit en RUST pour appliquer des filtres à un signal sonore. Il est développé par Henrik Enquist, voir:
 https://github.com/HEnquist/camilladsp
-Henrik Enquist a aussi créé un petit dépôt GitHub pour une installation facile de CamillaDSP et de ses dépendences:
+Henrik Enquist a aussi créé un petit dépôt GitHub pour une installation facile de CamillaDSP et de ses dépendances:
 https://github.com/HEnquist/camilladsp-setupscripts
 Suivre les indications données. Il faut au préalable avoir installé Miniconda ou Anaconda:
 https://www.anaconda.com/products/individual
 
 Quand j'ai lancé la script `install_mac_arm.sh`, j'ai eu une erreur, que j'ai supprimée en commentant la ligne
-```source ~/opt/anaconda3/etc/profile.d/conda.sh````
+```source ~/opt/anaconda3/etc/profile.d/conda.sh```
 de ce script (mettre un `#` devant).
 
 Pour lancer cammillaDSP suivre les instructions, en résumé il faut lancer le backend:
@@ -101,10 +101,10 @@ cd camillagui
 conda activate camillagui
 python main.py
  ```
-Ensuite connectez vous à l'adresse http://localhost:5000
+Ensuite connectez-vous à l'adresse http://localhost:5000
 avec votre navigateur internet.
 
-CamillaDSP est installé. Nous allons maintenant créer un fichier de configurtation.
+CamillaDSP est installé. Nous allons maintenant créer un fichier de configuration.
 
 ### Génération d'un fichier de config
 
@@ -124,17 +124,17 @@ Corriger les éventuelles erreurs.
 
 Dans l'onglet "Devices", vous devez choisir le bon "Playback Device": c'est la sortie qui va envoyer le son vers les enceintes. Dans mon cas, c'est le périphérique "BT HIFI AUDIO", mais cela dépend évidemment de votre système.
 
-Appuyer ensuite sur le bouton "Apply to CDSP". Vous devriez voir le vu-mètre vert s'activer quand vous mettez en route de la musique. 
+Appuyer ensuite sur le bouton "Apply to CDSP". Vous devriez voir le vumètre vert s'activer quand vous mettez en route de la musique. 
 
-Ne pas oublier de sélectionner comme sortie sonore la carte virutelle "BlackHole 2ch" dans les préférences système.
+Ne pas oublier de sélectionner comme sortie sonore la carte virtuelle "BlackHole 2ch" dans les préférences système.
 
 Dans les préférences système vous pouvez aussi basculer entre la carte son physique et la carte  "BlackHole 2ch" pour apprécier l'effet de l'égalisation.
 
 J'ai eu un peu de mal à régler le volume sonore. Si le niveau est trop élevé, ça sature, et CamillaDSP lance des warnings. Si c'est trop faible, il faut augmenter le volume, mais plutôt sur l'ampli physique.
 
-Une fois que tout est réglé, l'amélioration est siginficative. La musique sonne de façon beaucoup plus naturelle, sans résonance dans les graves.
+Une fois que tout est réglé, l'amélioration est significative. La musique sonne de façon beaucoup plus naturelle, sans résonance dans les graves.
 
-Il reste à trouver une mise en place de tout le système qui soit un peu plus ergonomiqe. À suivre...
+Il reste à trouver une mise en place de tout le système qui soit un peu plus ergonomique. À suivre...
 
 
 
