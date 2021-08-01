@@ -8,27 +8,29 @@ https://translate.google.com/translate?sl=fr&tl=en&u=https://github.com/phelluy/
 
 ## Introduction
 
-Ce petit guide décrit mon expérience d'égalisation audio d'une pièce (room audio equalization) sur mon Mac avec puce M1 Apple Silicon. J'ai regroupé diverses informations éparses sur le web et j'ai procédé avec pas mal d'essais et d'erreurs.
+Ce petit guide décrit mon expérience d'égalisation audio d'une pièce ("room audio equalization") sur mon Mac avec puce M1 Apple Silicon. J'ai regroupé diverses informations éparses sur le web et j'ai procédé avec pas mal d'essais et d'erreurs.
 
-J'espère que cette petite expérience servira à d'autres...
+J'espère que cette expérience servira à d'autres...
 
-Guide rédigé en juillet 2021, la techno évoluant vite, certaines informations données ci dessous peuvent devenir rapidement obsolètes.
+Guide rédigé en juillet 2021, la technique évoluant vite, certaines informations données ci dessous peuvent devenir rapidement obsolètes.
 
 ## Ma configuration hi-fi
 
 Ce n'est pas du matériel au top du top, mais je me suis bien amusé à le rassembler:
 
-- Une paire d'enceintes bibliothèques Triangle LN01:<br>
-    https://www.lesnumeriques.com/enceintes-home-cinema/triangle-elara-ln01-p29365/test.html <br>
+- Une paire d'enceintes bibliothèques Triangle LN01:
+
+    https://www.lesnumeriques.com/enceintes-home-cinema/triangle-elara-ln01-p29365/test.html  
 achetée d'occasion sur LeBonCoin, environ 150€.
-- Un ampli chinois avec des tubes, acheté sur AliExpress environ 100€, et qui ne sonne pas trop mal: <br>
-https://fr.aliexpress.com/item/1005001340180594.html?spm=a2g0o.search0304.0.0.c06c247dYZv3Lv&algo_pvid=76c9a6cc-3a75-4cfe-90b5-973a57b13e8d&algo_exp_id=76c9a6cc-3a75-4cfe-90b5-973a57b13e8d-36 <br>
-- cet ampli n'a pas de sortie low level pour caisson de basses. Je l'ai donc complété avec un convertisseur high level vers low level: <br>
-https://www.amazon.fr/gp/product/B0191Z7SZE/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&psc=1 <br>
-- Un caisson de basses Triangle Tales 340:<br>
-https://www.trianglehifi.fr/products/caisson-de-grave-tales-340?variant=31727134015535 <br>
+- Un ampli chinois avec des tubes, acheté sur AliExpress environ 100€, et qui ne sonne pas trop mal:  
+https://fr.aliexpress.com/item/1005001340180594.html?spm=a2g0o.search0304.0.0.c06c247dYZv3Lv&algo_pvid=76c9a6cc-3a75-4cfe-90b5-973a57b13e8d&algo_exp_id=76c9a6cc-3a75-4cfe-90b5-973a57b13e8d-36  
+- cet ampli n'a pas de sortie low level pour caisson de basses. Je l'ai donc complété avec un convertisseur high level vers low level:  
+https://www.amazon.fr/gp/product/B0191Z7SZE/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&psc=1
+- Un caisson de basses Triangle Tales 340:  
+https://www.trianglehifi.fr/products/caisson-de-grave-tales-340?variant=31727134015535  
 Je l'ai eu en promo à 250€.
-- Un micro calibré MiniDSP UMIK-1: https://www.amazon.fr/gp/product/B00N4Q25R8/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1
+- Un micro calibré MiniDSP UMIK-1:  
+https://www.amazon.fr/gp/product/B00N4Q25R8/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1  
 à environ 100€. Le fichier de calibrage, unique pour chaque micro, doit être téléchargé sur le site du fabricant:
 https://www.minidsp.com/products/acoustic-measurement/umik-1
 
@@ -37,11 +39,11 @@ Et j'ai aussi un MacBook Pro avec CPU M1.
 
 J'ai installé tout cela dans une petite pièce d'environ 12 m². La pièce est mansardée sous les toits. Le système audio sonne déjà pas mal, mais il y a clairement des résonances indésirables dans les basses. C'est pourquoi je me suis lancé dans l'égalisation audio.
 
-La procédure d'égalisation se fait en deux étapes: une étape de mesure et de calcul des filtres numériques; puis une étape d'intégration des filtres dans un logiciel de traitement numérique du signal (Digital Signal Processing, DSP) en temps réel. Le DSP vient s'intercaler entre le logiciel de production du son, Deezer par exemple, et la carte son qui enverra le signal vers l'ampli.
+La procédure d'égalisation se fait en deux étapes: une étape de mesure et de calcul des filtres numériques; puis une étape d'intégration des filtres dans un logiciel de traitement numérique du signal ("Digital Signal Processing", DSP) en temps réel. Le DSP vient s'intercaler entre le logiciel de production du son, Deezer par exemple, et la carte son qui enverra le signal vers l'ampli.
 
 ## Mesures
 
-Pour les mesures, j'ai utilisé le logiciel gratuit Room EQ Wizard, REW pour les intimes:
+Pour les mesures, j'ai utilisé le logiciel gratuit Room EQ Wizard, ou REW pour les intimes:  
 https://www.roomeqwizard.com/
 
 C'est un outil puissant, avec beaucoup de possibilités. Je n'en ai utilisé qu'une infime partie. Il y a des versions compilées pour la puce M1, mais il faut aller les télécharger sur le site avnirvana:
@@ -84,11 +86,11 @@ Si vous ouvrez le panneau son des préférences système, vous voyez apparaître
 
 ### Installation de CamillaDSP
 
-CamillaDSP est un logiciel écrit en RUST pour appliquer des filtres à un signal sonore. Il est développé par Henrik Enquist, voir:
-https://github.com/HEnquist/camilladsp
-Henrik Enquist a aussi créé un petit dépôt GitHub pour une installation facile de CamillaDSP et de ses dépendances:
-https://github.com/HEnquist/camilladsp-setupscripts
-Suivre les indications données. Il faut au préalable avoir installé Miniconda ou Anaconda:
+CamillaDSP est un logiciel écrit en RUST pour appliquer des filtres à un signal sonore. Il est développé par Henrik Enquist (merci à lui !), voir:  
+https://github.com/HEnquist/camilladsp  
+Henrik Enquist a aussi créé un dépôt GitHub pour une installation facile de CamillaDSP et de ses dépendances:
+https://github.com/HEnquist/camilladsp-setupscripts  
+Suivre les indications données. Il faut au préalable avoir installé Miniconda ou Anaconda:  
 https://www.anaconda.com/products/individual
 
 Quand j'ai lancé la script `install_mac_arm.sh`, j'ai eu une erreur, que j'ai supprimée en commentant la ligne
